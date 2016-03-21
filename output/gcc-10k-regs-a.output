@@ -1,0 +1,63 @@
+BEGIN SIMULATION: Basic Pipeline simulation
+Operands Cycle: 1, Results Cycle: 4, Starting Instruction: 80, Ending Instruction: 105, Trace File: traceFiles/gcc-10k-regs-a.trace
+Trace file opened successfully
+IF 
+ID IF 
+EX ID IF 
+ME EX ** 
+WB ME ** 
+   WB ID IF 
+      EX ID IF 
+      ME EX ** 
+      WB ME ** 
+         WB ID IF 
+            EX ID IF 
+            ME EX ID IF 
+            WB ME EX ID IF 
+               WB ME EX ** 
+                  WB ME ID IF 
+                     WB EX ID IF 
+                        ME EX ID IF 
+                        WB ME EX ** 
+                           WB ME ** 
+                              WB ID IF 
+                                 EX ** 
+                                 ME ** 
+                                 WB ID IF 
+                                    EX ID IF 
+                                    ME EX ID IF 
+                                    WB ME EX ** 
+                                       WB ME ** 
+                                          WB ID IF 
+                                             EX ID IF 
+                                             ME EX ID IF 
+                                             WB ME EX ** 
+                                                WB ME ** 
+                                                   WB ID IF 
+                                                      EX ID IF 
+                                                      ME EX ** 
+                                                      WB ME ** 
+                                                         WB ID IF 
+                                                            EX ID IF 
+                                                            ME EX ** 
+                                                            WB ME ** 
+                                                               WB ID IF 
+                                                                  EX ID IF 
+                                                                  ME EX ** 
+                                                                  WB ME ** 
+                                                                     WB ID IF 
+                                                                        EX ID 
+                                                                        ME EX 
+                                                                        WB ME 
+                                                                           WB 
+                                                                              
+                                                                              
+                                                                              
+Analysis of the simulation: 
+Number of instructions executed: 10000
+Expected Number of cycles when unpipelined: 50000
+Number of stall cycles: 6767
+Number of cycles in the pipeline simulation: 16771
+Average number of stalls per instruction: 0.6767
+Speedup: 298.134%
+End SIMULATION

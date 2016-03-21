@@ -1,0 +1,18 @@
+Colin Van Oort
+CS 222 Computer Architecture: Pipeline Simulation Write-up
+
+In your writeup you should discuss any issues or insights encountered in writing your simulator. You should also show the results from running it on each of the trace files provided. How do results from your phase 2 and phase 3 programs compare? How does the random register trace compare with the actual traces?
+
+Issues and Insights:
+	The most challenging portions of this project were obtaining the correct formatting in the pipeline execution chart and trying to match the behavior of your output precisely. I had a great deal of trouble getting my pipeline to behave in the same way as your provided output. Though I obtained a few configurations early on which came close to the same number of stalls as your provided output, getting an exact match proved to be rather challenging. The issue was a small logical error in my decode function which would overwrite the nextWrite variable of a register at even if the instruction being decoded was stalled.
+
+Comparison of phase 2 and phase 3:
+	
+	In phase 2 no stalls were implemented, so all of the traces would have the performance of having been executed on a perfect pipeline (Number of simulation cycles = number of instructions + pipeline depth -1). However, in phase three we implement stalls for data and structural hazards which shows us that the actual speed up in the pipeline is much less than the ideal speed up (Though still significant). 
+
+Observations on the random trace:
+	
+	The random trace had a speed up that was much closer to the ideal speed up than the actual traces obtained. This intuitively makes sense because the trace instructions are random and thus, unlikely to access the same register consecutively. This reduces the number of stalls due to data hazards significantly, leading to the increased performance. The real traces have some amount of spatial and temporal locality, so if a register is accessed by an instruction then it is likely to be accessed again in the near future. This leads to data hazards which then cause stalls and lower pipeline performance.
+
+Results:
+	The full results of each trace are provided in the output folder. In my test runs I found that the real trace files obtained a speed up in the range [286%, 303%] while the random trace obtained a much higher speed up of about 479%. This shows us that even a simple pipeline is a significant improvement over non-pipelined execution in all cases.

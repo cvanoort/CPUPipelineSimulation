@@ -1,0 +1,31 @@
+BEGIN SIMULATION: Basic Pipeline simulation
+Operands Cycle: 1, Results Cycle: 4, Starting Instruction: 1, Ending Instruction: 10, Trace File: traceFiles/gcc-10k-regs-c.trace
+Trace file opened successfully
+IF 
+ID IF 
+EX ID IF 
+ME EX ID IF 
+WB ME EX ID IF 
+   WB ME EX ID IF 
+      WB ME EX ** 
+         WB ME ** 
+            WB ID IF 
+               EX ID IF 
+               ME EX ** 
+               WB ME ID IF 
+                  WB EX ID IF 
+                     ME EX ID 
+                     WB ME EX 
+                        WB ME 
+                           WB 
+                              
+                              
+                              
+Analysis of the simulation: 
+Number of instructions executed: 10000
+Expected Number of cycles when unpipelined: 50000
+Number of stall cycles: 6642
+Number of cycles in the pipeline simulation: 16646
+Average number of stalls per instruction: 0.6642
+Speedup: 300.372%
+End SIMULATION
