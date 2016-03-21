@@ -1,0 +1,49 @@
+Pipeline simulation project
+
+The purpose of the project is to simulate a processor pipeline to determine the number of cycles require to execute an instruction trace.
+
+The output for all modes will include the number of cycles taken for the entire instruction trace, the pipeline speedup, and the average stalls per instruction. It should also be able to produce a chart, similar to figure C-10 of your text, showing the progression of a selected range of instructions through the various pipeline stages.
+
+The simulator should take five command line arguments:
+- The cycle in which operands are read (e.g., cycle 1 (ID) out of cycles 0-4)
+- The cycle in which results are available (e.g., cycle 4 (WB) out of cycles 0-4)
+- The starting instruction for the execution chart
+- The ending instruction for the execution chart (0 or < starting instruction means no execution chart)
+- The name of the trace file
+
+The simulator will be hardcoded to use a 5 cycle pipeline with the same pipeline stage names as the MIPS pipeline in your text (as with any hardcoded value in a program, it's a good ideal to make it a symbolic constant, as it makes the intent clearer than simply scattering hardcoded "5"s around your code). Assuming that all instructions use the same number of cycles is somewhat restrictive and unrealistic, as it doesn't allow modeling of variable length execution units, but it simplifies the model. The assumption that all instructions read their operands in the same cycle is fairly reasonable, but the assumption that all instructions have results available is another simplification, since in reality memory load instructions will have results available later than ALU operations.
+
+Each line of a trace file will contain three integers, representing the registers for operand 1, operand 2, and the result. A -1 in any of these positions means that the instruction doesn't use that operand, or doesn't produce a result. I'll provide 6 trace files:
+
+gcc-1k-regs.trace
+gcc-10k-regs-a.trace
+gcc-10k-regs-b.trace
+gcc-10k-regs-c.trace
+gcc-10k-regs-d.trace
+random-regs-10K.trace
+
+The gcc* files come from the same execution traces as were used for your cache simulation. I'll give you my results for the first. The last file has the same maximum number of registers (46), and the same fraction of instructions including each operand and result register position, but randomly chooses among the 46 registers for each entry.
+
+========================================================================================================
+Phase 1:
+
+Write a main program the reads the command line parameters and a means to read a record from the trace file.
+
+Create a "print" method for each of these structures that shows their contents.
+
+Write a test main that reads the first N lines from a trace file and writes out what it read, and the contents of any stage and register status structures.
+
+========================================================================================================
+Phase 2:
+
+Create a simulation loop that enters new instructions into your pipeline, moves instructions through the pipeline stages, and prints the speedup achieved.
+
+Run your program on each of the trace files provided. What speedup do you expect? What do you get?
+
+========================================================================================================
+Phase 3:
+
+Recognize data and structural hazards and stall the pipeline. Output an instruction execution chart. Run on the trace files provided, and discuss your results.
+
+In your writeup you should discuss any issues or insights encountered in writing your simulator. You should also show the results from running it on each of the trace files provided. How do results from your phase 2 and phase 3 programs compare? How does the random register trace compare with the actual traces?
+
